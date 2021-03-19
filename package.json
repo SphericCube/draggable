@@ -1,6 +1,6 @@
 {
   "name": "draggable",
-  "version": "0.1",
+  "version": "0.3.0",
   "description": "Make HTMLElement draggable. With snapping",
   "main": "index.js",
   "repository": {
