@@ -1,0 +1,17 @@
+{
+  "name": "draggable",
+  "version": "0.1",
+  "description": "Make HTMLElement draggable. With snapping",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SphericCube/draggable.git"
+  },
+  "keywords": [],
+  "author": "Yevhen Dovhoborets",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SphericCube/draggable/issues"
+  },
+  "homepage": "https://github.com/SphericCube/draggable#readme"
+}
