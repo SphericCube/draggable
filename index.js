@@ -1,1 +1,1 @@
-export * from './draggable'
+module.exports = require('./draggable')

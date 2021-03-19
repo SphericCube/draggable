@@ -5,8 +5,16 @@
  * @param {number} borderRadius Radius of unsnapped border corners when element is detached in px
  * @param {number} snapDistance Snap distance in px. 0 = no snap
  */
-export function draggable(element, {shadowRadius = 0, borderRadius = 0, snapDistance = 0} = {}) {
-    if (!element) throw new Error("Element not provided")
+function draggable(element, {shadowRadius, borderRadius, snapDistance} = {}) {
+    if (!element) throw new Error("@sphericcube/draggable: Element not provided")
+    
+    shadowRadius = shadowRadius || 0;
+    borderRadius = borderRadius || 0;
+    snapDistance = snapDistance || 0;
+
+    if(shadowRadius && (typeof shadowRadius !== 'number')) throw new Error(`@sphericcube/draggable: Shadow radius must be a number. ${typeof shadowRadius} is given`);
+    if(borderRadius && (typeof borderRadius !== 'number')) throw new Error(`@sphericcube/draggable: Border radius must be a number. ${typeof borderRadius} is given`);
+    if(snapDistance && (typeof snapDistance !== 'number')) throw new Error(`@sphericcube/draggable: Snap distance must be a number. ${typeof snapDistance} is given`);
 
     /** @var {HTMLElement} replacementElement */
     let replacementElement = null;
@@ -136,3 +144,5 @@ export function draggable(element, {shadowRadius = 0, borderRadius = 0, snapDist
     }, options);
     element.addEventListener('dragstart',detach);
 }
+
+module.exports = draggable;
