@@ -3,9 +3,9 @@
  * @param {HTMLElement} element Draggable element
  * @param {number} shadowRadius Radius os shadow when element is detached in px
  * @param {number} borderRadius Radius of unsnapped border corners when element is detached in px
- * @param {number} snapRadius Snap distance in px. 0 = no snap
+ * @param {number} snapDistance Snap distance in px. 0 = no snap
  */
-export function draggable(element, {shadowRadius = 0, borderRadius = 0, snapRadius = 0} = {}) {
+export function draggable(element, {shadowRadius = 0, borderRadius = 0, snapDistance = 0} = {}) {
     if (!element) throw new Error("Element not provided")
 
     /** @var {HTMLElement} replacementElement */
@@ -70,18 +70,18 @@ export function draggable(element, {shadowRadius = 0, borderRadius = 0, snapRadi
             snapX = 0,
             snapY = 0;
 
-        if((xPos + element.clientWidth + snapRadius) > document.body.clientWidth){
+        if((xPos + element.clientWidth + snapDistance) > document.body.clientWidth){
             xPos = document.body.clientWidth - element.clientWidth;
             snapX = 1;
-        } else if(xPos < snapRadius) {
+        } else if(xPos < snapDistance) {
             xPos = 0;
             snapX = -1;
         }
 
-        if((yPos + element.clientHeight + snapRadius) > window.innerHeight){
+        if((yPos + element.clientHeight + snapDistance) > window.innerHeight){
             yPos = window.innerHeight - element.clientHeight;
             snapY = 1;
-        } else if(yPos < snapRadius) {
+        } else if(yPos < snapDistance) {
             yPos = 0;
             snapY = -1;
         }
@@ -100,7 +100,7 @@ export function draggable(element, {shadowRadius = 0, borderRadius = 0, snapRadi
     }
 
     function snapToContainer(){
-        let snap = (Math.abs(element.x - replacementElement.x) < snapRadius) && (Math.abs(element.y - replacementElement.y) < snapRadius);
+        let snap = (Math.abs(element.x - replacementElement.x) < snapDistance) && (Math.abs(element.y - replacementElement.y) < snapDistance);
 
         if(snap){
             element.style.left = replacementElement.left;
@@ -118,7 +118,7 @@ export function draggable(element, {shadowRadius = 0, borderRadius = 0, snapRadi
     }
 
     function snap(){
-        if(snapRadius) {
+        if(snapDistance) {
             snapToContainer() || snapToWindow()
         }
     }
