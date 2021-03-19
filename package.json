@@ -1,6 +1,6 @@
 {
   "name": "@sphericcube/draggable",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Make HTMLElement draggable. With snapping",
   "main": "index.js",
   "repository": {
